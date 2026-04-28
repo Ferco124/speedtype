@@ -1,2 +1,2 @@
-# p9000-poker
-poker game project for comp2113 
+# SpeedType
+typing game project for comp2113 
