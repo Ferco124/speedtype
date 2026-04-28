@@ -42,6 +42,7 @@ int main(){
             changeProfile(user);
         }else if (input == 4){
             saveProfile(user);
+            delete user;
             cout<< "See you next time!" << endl;
             exit(0);
         }
