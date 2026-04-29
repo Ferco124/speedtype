@@ -3,10 +3,14 @@
 SpeedType is a typing trainer game project for COMP2113.  
 It features a user profile system and multiple difficulty levels.
 
-## Group members
+## Group Members & Work Distribution
 
-Cheung Tsun Ho (3036587365)  
-Tang Chun Lok (3036590506)
+**Cheung Tsun Ho (3036587365)**:  
+Main Program (main.cpp), Profile System (profile.cpp), Statistics Calculation (game.cpp), README.md  
+
+**Tang Chun Lok (3036590506)**:  
+Typing Game Logic & Statistics Calculation (game.cpp), Sentences Library
+
 
 ## Gameplay
 
