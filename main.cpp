@@ -5,17 +5,15 @@
 
 using namespace std;
 
-int userInput(int lower, int upper, string error){
+int userInput(int lower, int upper){
     while (true){
         int input = 0;
         cout << "#? " ;
-        cin >> input;
-        if (lower <= input && input <= upper){
-            return input;
-        }
-        if(error != ""){
-            cout << error << endl;
-        }
+        if (cin >> input){
+            if (lower <= input && input <= upper){
+                return input;
+            }
+        } else cin.clear();cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 }
 
@@ -36,7 +34,10 @@ int main(){
         input = userInput(1,4);
         cout << endl;
         if (input == 1){
-            wpm = main_game(ask_for_diff());
+            cout << ">Main Menu>Play\nWhich difficulties you want?" << endl;
+            cout << "1) Easy\n2) Normal\n3) Hard\n";
+            int diff = userInput(1,3);
+            wpm = main_game(diff);
 
             if (wpm > user->bestWPM){
                 cout << "\nNew Personal Best WPM!!! Congrats!!!" << endl;
