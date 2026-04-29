@@ -96,7 +96,7 @@ double main_game(int diff_no){ //function for the main game
         int extrawords = 0;
         while (ss2 >> now_player) {
             extrawords++;
-            cout << setw(9) << "extra word" << setw(24) << "/" << setw(20) << now_player << endl;
+            cout << setw(9) << "extra" << setw(24) << "/" << setw(20) << now_player << endl;
         }
 
         if (typo_count==0){ 
