@@ -35,7 +35,6 @@ double main_game(int diff_no){ //function for the main game
         if (!getline(fin, passage)) break;
     }  
     if (getline(fin, passage)) {
-        double words = 0; // numbers of words in the sentence
         cout << "\n~~~This is the passage you need to type~~~\n" << endl;
         cout << passage << endl;
         cout << "\nAre you ready? (Enter any input to start)" << endl;
@@ -56,33 +55,62 @@ double main_game(int diff_no){ //function for the main game
         chrono::duration<double> elapsed = end - start;
         double time_used;
         time_used = elapsed.count() / 60; // change timer unit to minute
+
+        double words = 0; // numbers of words in the player input
+        string currentword;
+        stringstream word(passage_enter);
+        while (word >> currentword){
+            words++;
+        }
+
         double raw_wpm; // wpm of player but also count typo
-        raw_wpm = (passage.length() / 5) / time_used;
+        raw_wpm = (passage_enter.length() / 5) / time_used;
+
         cout << "===========================================================" << endl;
         cout << setw(16) << "the N-th word" << setw(20) << "corrected word" << setw(20) << "entered word" << endl;
         string now, now_player; // used for checking every mistaken word of player one by one
         stringstream ss(passage);
         stringstream ss2(passage_enter);
-        int typo_count = 0; // store the number of mistaken word of player for calculating wpm and accuracy
-        while (ss >> now){ 
-            words++;
-            if (ss2 >> now_player){
-                if (now != now_player){
-                    cout << setw(9) << words << setw(21) << now << setw(23) << now_player << endl;
-                    typo_count++;
-                }
+        double typo_count = 0; // store the number of mistaken word of player for calculating wpm and accuracy
+        int totalwords = 0;
+        while (ss >> now && ss2 >> now_player){
+            totalwords++;
+            if (now != now_player){
+                cout << setw(9) << totalwords << setw(21) << now << setw(23) << now_player << endl;
+                typo_count++;
             }
         }
+
+        if (!ss.fail() && ss2.eof()) {
+            totalwords++;
+            cout << setw(9) << totalwords << setw(21) << now << setw(23) << "/" << endl;
+            typo_count++;
+        }
+
+        while (ss >> now){
+            totalwords++;
+            cout << setw(9) << totalwords << setw(21) << now << setw(23) << "/" << endl;
+            typo_count++;
+        }
+
+        int extrawords = 0;
+        while (ss2 >> now_player) {
+            extrawords++;
+            cout << setw(9) << "extra word" << setw(21) << "/" << setw(23) << now_player << endl;
+        }
+
         if (typo_count==0){ 
             cout << setw(43) << "there are no mistaken words" << endl;
         }
+
         double accuracy; // the accuracy of player
-        accuracy = ((words - typo_count) / words) * 100;
-        wpm = raw_wpm - typo_count / time_used;
+        accuracy = ((totalwords - typo_count) / totalwords) * 100;
+        wpm = raw_wpm - (typo_count / time_used);
+        if (wpm < 0) wpm = 0;
         cout << "===========================================================" << endl;
-        cout << "Your wpm is: " << wpm << endl;
-        cout << "Your raw wpm is: " << raw_wpm << endl;
-        cout << "Your accuracy is: " << accuracy << "%" << endl;
+        cout << "Your wpm is: " << std::fixed << std::setprecision(2) << wpm << endl;
+        cout << "Your raw wpm is: " << std::fixed << std::setprecision(2) << raw_wpm << endl;
+        cout << "Your accuracy is: " << std::fixed << std::setprecision(2) << accuracy << "%" << endl;
         
     }
     if (wpm > 400){ // to detect the abuse of copy and paste
@@ -96,11 +124,8 @@ double main_game(int diff_no){ //function for the main game
 
 int ask_for_diff(){ // asking players choice of difficulty
     cout << "Which difficulties you want?" << endl;
-    cout << "1) Easy\n2) Normal\n3) Hard\nChoice: ";
+    cout << "1) Easy\n2) Normal\n3) Hard\n#? ";
     int diff_no;
     cin >> diff_no;
     return diff_no; // return the number for the main_game function to choose which text file the function should read
 }
-
-
-
