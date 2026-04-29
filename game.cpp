@@ -108,9 +108,9 @@ double main_game(int diff_no){ //function for the main game
         wpm = raw_wpm - (typo_count / time_used);
         if (wpm < 0) wpm = 0;
         cout << "===========================================================" << endl;
-        cout << "Your wpm is: " << std::fixed << std::setprecision(2) << wpm << endl;
-        cout << "Your raw wpm is: " << std::fixed << std::setprecision(2) << raw_wpm << endl;
-        cout << "Your accuracy is: " << std::fixed << std::setprecision(2) << accuracy << "%" << endl;
+        cout << "Your wpm is: " << fixed << setprecision(2) << wpm << endl;
+        cout << "Your raw wpm is: " << fixed << setprecision(2) << raw_wpm << endl;
+        cout << "Your accuracy is: " << fixed << setprecision(2) << accuracy << "%" << endl;
         
     }
     if (wpm > 400){ // to detect the abuse of copy and paste

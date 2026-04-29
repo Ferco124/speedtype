@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 #include "profile.h"
 #include "game.h"
 
