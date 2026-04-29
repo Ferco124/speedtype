@@ -67,7 +67,7 @@ double main_game(int diff_no){ //function for the main game
         raw_wpm = (passage_enter.length() / 5) / time_used;
 
         cout << "===========================================================" << endl;
-        cout << setw(16) << "the N-th word" << setw(20) << "corrected word" << setw(20) << "entered word" << endl;
+        cout << setw(16) << "the N-th word" << setw(20) << "correct word" << setw(20) << "entered word" << endl;
         string now, now_player; // used for checking every mistaken word of player one by one
         stringstream ss(passage);
         stringstream ss2(passage_enter);
@@ -76,27 +76,27 @@ double main_game(int diff_no){ //function for the main game
         while (ss >> now && ss2 >> now_player){
             totalwords++;
             if (now != now_player){
-                cout << setw(9) << totalwords << setw(21) << now << setw(23) << now_player << endl;
+                cout << setw(9) << totalwords << setw(24) << now << setw(20) << now_player << endl;
                 typo_count++;
             }
         }
 
         if (!ss.fail() && ss2.eof()) {
             totalwords++;
-            cout << setw(9) << totalwords << setw(21) << now << setw(23) << "/" << endl;
+            cout << setw(9) << totalwords << setw(24) << now << setw(20) << "/" << endl;
             typo_count++;
         }
 
         while (ss >> now){
             totalwords++;
-            cout << setw(9) << totalwords << setw(21) << now << setw(23) << "/" << endl;
+            cout << setw(9) << totalwords << setw(24) << now << setw(20) << "/" << endl;
             typo_count++;
         }
 
         int extrawords = 0;
         while (ss2 >> now_player) {
             extrawords++;
-            cout << setw(9) << "extra word" << setw(21) << "/" << setw(23) << now_player << endl;
+            cout << setw(9) << "extra word" << setw(24) << "/" << setw(20) << now_player << endl;
         }
 
         if (typo_count==0){ 
