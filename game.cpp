@@ -15,13 +15,13 @@ double main_game(int diff_no){ //function for the main game
     srand(time(NULL));
     string filename;
     if (diff_no==1){  //which text file is read depends on player's decision of difficulty
-        filename = "passage\\easy.txt";
+        filename = "passage/easy.txt";
     }
     else if (diff_no==2){
-        filename = "passage\\normal.txt";
+        filename = "passage/normal.txt";
     }
     else {
-        filename = "passage\\hard.txt";
+        filename = "passage/hard.txt";
     }
     ifstream fin;
     fin.open(filename);
@@ -36,9 +36,9 @@ double main_game(int diff_no){ //function for the main game
     }  
     if (getline(fin, passage)) {
         double words = 0; // numbers of words in the sentence
-        cout << "~~~This is the passage you need to type~~~" << endl;
+        cout << "\n~~~This is the passage you need to type~~~\n" << endl;
         cout << passage << endl;
-        cout << "Are you ready? (Enter any input to start)" << endl;
+        cout << "\nAre you ready? (Enter any input to start)" << endl;
         string ready; // let player input something when they are ready
         cin >> ready;
         cin.ignore(1000, '\n'); // this is to avoid the coming timer stop immediately
@@ -96,7 +96,7 @@ double main_game(int diff_no){ //function for the main game
 
 int ask_for_diff(){ // asking players choice of difficulty
     cout << "Which difficulties you want?" << endl;
-    cout << "(1). Easy\n(2). Normal\n(3). Hard\nChoice: ";
+    cout << "1) Easy\n2) Normal\n3) Hard\nChoice: ";
     int diff_no;
     cin >> diff_no;
     return diff_no; // return the number for the main_game function to choose which text file the function should read

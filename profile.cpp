@@ -27,15 +27,17 @@ void saveProfile(Profile* p){
 }
 
 void updateStats(Profile* p, double WPM){
-    if (WPM > p->bestWPM){
-        p->bestWPM = WPM;
-    } 
-    
-    double totalWPM = (p->avgWPM * p->playCount) + WPM;
-    p->playCount++;
-    p->avgWPM = totalWPM / p->playCount;
-    
-    saveProfile(p);
+    if (WPM >= 0){
+        if (WPM > p->bestWPM){
+            p->bestWPM = WPM;
+        } 
+        
+        double totalWPM = (p->avgWPM * p->playCount) + WPM;
+        p->playCount++;
+        p->avgWPM = totalWPM / p->playCount;
+        
+        saveProfile(p);
+    }
 }
 
 void viewStats(Profile* p){

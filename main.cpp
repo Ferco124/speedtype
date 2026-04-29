@@ -1,6 +1,7 @@
 #include <iostream>
 #include "main.h"
 #include "profile.h"
+#include "game.h"
 
 using namespace std;
 
@@ -23,9 +24,10 @@ int main(){
     cout<< "Welcome to SpeedType!!\nPlease enter username (new user will be created if user does not exist):" << endl;
     cin >> username;
     Profile* user = loadProfile(username);
-
+    double wpm;
     int input = 0;
     while (true){
+        wpm = 0.0;
         cout << "\n >Main Menu\n[Input] Select an option:" <<endl; 
         cout << "1) Play" <<endl; 
         cout << "2) See statistics" <<endl; 
@@ -34,8 +36,8 @@ int main(){
         input = userInput(1,4);
         cout << endl;
         if (input == 1){
-            cout<< "insane gameplay goes here"<<endl;
-            user->playCount +=1;
+            wpm = main_game(ask_for_diff());
+            updateStats(user, wpm);
         }else if (input == 2){
             viewStats(user);
         }else if (input == 3){

@@ -1,9 +1,11 @@
+game.o: game.h game.cpp
+	g++ -c game.cpp
 profile.o: profile.h profile.cpp
 	g++ -c profile.cpp
-main.o: main.h profile.h main.cpp
+main.o: main.h game.h profile.h main.cpp
 	g++ -c main.cpp
-speedtype: main.o profile.o
-	g++ main.o profile.o -o speedtype
+speedtype: game.o main.o profile.o
+	g++ game.o main.o profile.o -o speedtype
 clean:
-	rm -f profile.o main.o speedtype
+	rm -f game.o profile.o main.o speedtype
 .PHONY: clean
