@@ -24,7 +24,7 @@ After a game is over, you will see some statistics. First is a list of mistakes 
 If you scored a new personal best record, the game will alert you.
 
 #### WPM and Accuracy Calculation
-Our game utilizes the Standardized Net WPM metric, which is the benchmark used in professional typing competitions and modern web-based trainers.
+Our game utilizes the Standardized Net WPM metric, which is used in professional typing competitions and other web typing game.
 
 **The 5 Character Rule**: To ensure fairness across different sentence complexities, 1 "Word" is defined as 5 characters (including spaces). This prevents a user's WPM from fluctuating simply because one sentence has longer words than another.
 
@@ -36,9 +36,9 @@ $$Raw WPM = \frac{(\text{Total Characters} / 5)}{\text{Time}}$$
 
 **WPM**: This is the final score saved to your profile. It is calculated by taking your raw speed and applying a penalty for every mistake:
 
-$$Net WPM = \text{Raw WPM} - \left( \frac{\text{Typo Count}}{\text{Time}} \right)$$
+$$WPM = \text{Raw WPM} - \left( \frac{\text{Typo Count}}{\text{Time}} \right)$$
 
-This approach ensures that a player who types very fast but makes many mistakes (or fails to finish the passage) will receive a score that reflects their true typing proficiency.
+This ensures that a player who types very fast but makes many mistakes (or fails to finish the passage) will receive a score that reflects their true typing level.
 
 WPM over 400 will be considered invalid, and that game will not be counted towards player statistics. This act as an anti-cheat measure, to prevent user from copy and pasting the passage directly in the terminal.
 
