@@ -37,6 +37,11 @@ int main(){
         cout << endl;
         if (input == 1){
             wpm = main_game(ask_for_diff());
+
+            if (wpm > user->bestWPM){
+                cout << "\nNew Personal Best WPM!!! Congrats!!!" << endl;
+            }
+
             updateStats(user, wpm);
         }else if (input == 2){
             viewStats(user);
