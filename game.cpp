@@ -121,11 +121,3 @@ double main_game(int diff_no){ //function for the main game
         return wpm; // return the wpm when every game ends to for the statistic of players
     }
 }
-
-int ask_for_diff(){ // asking players choice of difficulty
-    cout << "Which difficulties you want?" << endl;
-    cout << "1) Easy\n2) Normal\n3) Hard\n#? ";
-    int diff_no;
-    cin >> diff_no;
-    return diff_no; // return the number for the main_game function to choose which text file the function should read
-}
