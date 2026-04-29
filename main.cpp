@@ -1,5 +1,5 @@
 #include <iostream>
-#include "main.h"
+#include <string>
 #include "profile.h"
 #include "game.h"
 

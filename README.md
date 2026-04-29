@@ -77,7 +77,7 @@ Player data is loaded into memory when logging in. After each game data in the m
 Player data is stored in a .txt file. When launching the game player will login by typing the username. The game will try to find the save file for that username, a new save will be created if not found.
 
 ### Program codes in multiple files
-The game is coded in separate files, the main program (main.cpp/h), the profile management (profile.cpp/h), and the actual game itself (game.cpp/h).
+The game is coded in separate files, the main program (main.cpp), the profile management (profile.cpp/h), and the actual game itself (game.cpp/h).
 
 ### Multiple Difficulty Levels
 The game offer 3 difficulty level, easy normal and hard. Harder difficulty will have longer sentences and more complex words.
