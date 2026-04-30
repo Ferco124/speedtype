@@ -70,11 +70,16 @@ struct Profile {
 };
 ```
 
+Player data is loaded onto memory dynamically upon login. After each game the data is updated automatically and saved to a text file.   
+The details are explained in more detail below.
+
 ### Dynamic memory management
-Player data is loaded into memory when logging in. After each game data in the memory gets updateed, and the data will be saved. When player logout or exit, the user data will be saved again.
+The Profile struct is the player data structure that is handled dynamically. When a player logs in or creates a new account, a new Profile object is dynamically allocated on the memory with the loadProfile function. After each game, the player data on memory gets updated. When player logout or exit, the memory of the current player data is deallocates before loading new user data onto the memory.
 
 ### File input/output
-Player data is stored in a .txt file. When launching the game player will login by typing the username. The game will try to find the save file for that username, a new save will be created if not found.
+Player data is stored in a text file in the format of [username].txt. When launching the game player will login by typing the username. The game will try to find the save file for that username and read the save file. The save file contains 1 integer `playCount` and 2 floating point numbers `avgWPM` and `bestWPM`, the game will read the file and load the data onto memory. A new save will be created if an existing save is not found. 
+
+When the player finishes a game, the new updated player data will be saved to the text file, ensuring no play data lost even if the game is not exited properly.
 
 ### Program codes in multiple files
 The game is coded in separate files, the main program (main.cpp), the profile management (profile.cpp/h), and the actual game itself (game.cpp/h).
