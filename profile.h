@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-struct Profile {
+struct Profile { //structure for storing user data
     string name;
     int playCount;
     double avgWPM;

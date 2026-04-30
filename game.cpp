@@ -10,7 +10,7 @@
 
 using namespace std;
 
-double main_game(int diff_no){ //function for the main game 
+double main_game(int diff_no){ //function for the main game, take difficulty selection as input
     double wpm; // wpm of player after every round (does not count typo)
     srand(time(NULL));
     string filename;
@@ -76,27 +76,27 @@ double main_game(int diff_no){ //function for the main game
         while (ss >> now && ss2 >> now_player){
             totalwords++;
             if (now != now_player){
-                cout << setw(9) << totalwords << setw(24) << now << setw(20) << now_player << endl;
+                cout << setw(9) << totalwords << setw(24) << now << setw(20) << now_player << endl; //display wrong words
                 typo_count++;
             }
         }
 
         if (!ss.fail() && ss2.eof()) {
             totalwords++;
-            cout << setw(9) << totalwords << setw(24) << now << setw(20) << "/" << endl;
+            cout << setw(9) << totalwords << setw(24) << now << setw(20) << "/" << endl; //display missing words
             typo_count++;
         }
 
         while (ss >> now){
             totalwords++;
-            cout << setw(9) << totalwords << setw(24) << now << setw(20) << "/" << endl;
+            cout << setw(9) << totalwords << setw(24) << now << setw(20) << "/" << endl; //display missing words
             typo_count++;
         }
 
         int extrawords = 0;
         while (ss2 >> now_player) {
             extrawords++;
-            cout << setw(9) << "extra" << setw(24) << "/" << setw(20) << now_player << endl;
+            cout << setw(9) << "extra" << setw(24) << "/" << setw(20) << now_player << endl; //display extra words
         }
 
         if (typo_count==0){ 
