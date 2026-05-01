@@ -39,6 +39,8 @@ Our game utilizes the Standardized Net WPM metric, which is used in professional
 
 $$Raw WPM = \frac{(\text{Total Characters} / 5)}{\text{Time}}$$
 
+This value represents the player's total throughput and includes all characters typed, regardless of whether they were correct or not. It measures pure speed before any penalties for mistakes are applied.
+
 **Accuracy**: Calculated as the percentage of the target passage correctly typed. We use floating-point division to ensure precision in the final percentage.
 
 **WPM**: This is the final score saved to your profile. It is calculated by taking your raw speed and applying a penalty for every mistake:
@@ -80,12 +82,19 @@ The details are explained in more detail below.
 The Profile struct is the player data structure that is handled dynamically. When a player logs in or creates a new account, a new Profile object is dynamically allocated on the memory with the loadProfile function. After each game, the player data on memory gets updated. When player logout or exit, the memory of the current player data is deallocated before loading new user data onto the memory.
 
 ### File input/output
+
+#### Player data
 Player data is stored in a text file in the format of [username].txt. When launching the game player will login by typing the username. The game will try to find the save file for that username and read the save file. The save file contains 1 integer `playCount` and 2 floating point numbers `avgWPM` and `bestWPM`, the game will read the file and load the data onto memory. A new save will be created if an existing save is not found. 
 
 When the player finishes a game, the new updated player data will be saved to the text file, ensuring no play data lost even if the game is not exited properly.
 
+#### Sentences Library
+Sentences are stored in text files separated by their difficulities, namely easy.txt, normal.txt and hard.txt. They are all under the `passages` folder
+
+When starting a new game, the program will access the files according to the players' difficulty selection. A passage will be randomly selected for the player to type. This separation ensures that the game logic remains modular and the sentence pool can be easily expanded by simply editing the .txt files.
+
 ### Program codes in multiple files
-The game is coded in separate files, the main program (main.cpp), the profile management (profile.cpp/h), and the actual game itself (game.cpp/h).
+The game is coded in separate files, the main program (main.cpp), the profile management (profile.cpp/h), and the  game logic (game.cpp/h).
 
 ### Multiple Difficulty Levels
 The game offer 3 difficulty level, easy normal and hard. Harder difficulty will have longer sentences and more complex words.
